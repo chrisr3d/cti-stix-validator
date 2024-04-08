@@ -13,7 +13,7 @@ VALID_CAMPAIGN = u"""
     "modified": "2023-09-27T20:12:54.984Z",
     "created_by_ref": "identity--f431f809-377b-45e0-aa1c-6a4751cae5ff",
     "name": "Operation Dream Job",
-    "description": "Operation Dream Job was a cyber espionage operation likely conducted by Lazarus Group that targeted the defense, aerospace, government, and other sectors in the United States, Israel, Australia, Russia, and India.",
+    "description": "Operation Dream Job was a cyber espionage operation likely conducted by Lazarus Group.",
     "aliases": [
         "Operation Dream Job",
         "Operation North Star",
