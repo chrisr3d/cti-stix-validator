@@ -742,7 +742,7 @@ class ObservedDataTestCases(ValidatorTest):
         self.assertFalseWithOptions(observed_data)
 
     def test_invalid_accessed_timestamp(self):
-        observed_data = copy.deepcopy(self.valid_object)
+        observed_data = copy.deepcopy(self.valid_observed_data)
         observed_data['created'] = "2016-11-31T08:17:27.000000Z"
         self.assertFalseWithOptions(observed_data)
 
