@@ -1,8 +1,8 @@
+import copy
 import json
 
 from . import ValidatorTest
 from ... import validate_string
-from copy import deepcopy
 
 VALID_CAMPAIGN = u"""
 {
@@ -33,7 +33,7 @@ class CampaignTestCases(ValidatorTest):
         self.assertTrue(results.is_valid)
 
     def test_invalid_timestamp(self):
-        campaign = deepcopy(self.valid_campaign)
+        campaign = copy.deepcopy(self.valid_campaign)
         campaign['created'] = "2016-09-31T08:17:27.000Z"
         self.assertFalseWithOptions(campaign)
 

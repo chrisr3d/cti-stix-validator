@@ -1,8 +1,8 @@
+import copy
 import json
 
 from . import ValidatorTest
 from ... import validate_string
-from copy import deepcopy
 
 VALID_COURSE_OF_ACTION = u"""
 {
@@ -25,7 +25,7 @@ class CoATestCases(ValidatorTest):
         self.assertTrue(results.is_valid)
 
     def test_invalid_timestamp(self):
-        coa = deepcopy(self.valid_course_of_action)
+        coa = copy.deepcopy(self.valid_course_of_action)
         coa['created'] = "2016-11-31T01:00:00.000Z"
         self.assertFalseWithOptions(coa)
 
