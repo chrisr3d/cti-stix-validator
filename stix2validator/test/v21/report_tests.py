@@ -32,6 +32,14 @@ class IdentityTestCases(ValidatorTest):
         results = validate_string(VALID_REPORT, self.options)
         self.assertTrue(results.is_valid)
 
+    def test_vocab_report_type(self):
+        report = copy.deepcopy(self.valid_report)
+        report['report_types'] = ["something"]
+        results = validate_parsed_json(report, self.options)
+        self.assertEqual(results.is_valid, False)
+
+        self.check_ignore(report, 'report-types')
+
     def test_invalid_timestamp(self):
         report = copy.deepcopy(self.valid_report)
         report['published'] = "2016-05-32T08:17:27.000Z"
@@ -48,16 +56,3 @@ class IdentityTestCases(ValidatorTest):
 
         report['modified'] = "2016-05-12T08:17:27.001Z"
         self.assertTrueWithOptions(report)
-
-    def test_vocab_report_type(self):
-        report = copy.deepcopy(self.valid_report)
-        report['report_types'] = ["something"]
-        results = validate_parsed_json(report, self.options)
-        self.assertEqual(results.is_valid, False)
-
-        self.check_ignore(report, 'report-types')
-
-    def test_invalid_timestamp(self):
-        report = copy.deepcopy(self.valid_report)
-        report['published'] = "2016-11-31T08:17:27.000000Z"
-        self.assertFalseWithOptions(report)
