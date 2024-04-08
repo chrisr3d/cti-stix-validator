@@ -32,6 +32,23 @@ class IdentityTestCases(ValidatorTest):
         results = validate_string(VALID_REPORT, self.options)
         self.assertTrue(results.is_valid)
 
+    def test_invalid_timestamp(self):
+        report = copy.deepcopy(self.valid_report)
+        report['published'] = "2016-05-32T08:17:27.000Z"
+        self.assertFalseWithOptions(report)
+
+        report['published'] = "2016-05-12T19:59:11Z"
+        self.assertTrueWithOptions(report)
+
+        report['created'] = "2016-05-32T08:17:27.000Z"
+        self.assertFalseWithOptions(report)
+
+        report['created'] = "2016-05-12T08:17:27.000123Z"
+        self.assertFalseWithOptions(report)
+
+        report['modified'] = "2016-05-12T08:17:27.001Z"
+        self.assertTrueWithOptions(report)
+
     def test_vocab_report_type(self):
         report = copy.deepcopy(self.valid_report)
         report['report_types'] = ["something"]
