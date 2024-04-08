@@ -122,8 +122,8 @@ class ObservedDataTestCases(ValidatorTest):
         net_traffic['end'] = "2016-04-06T20:06:37.000Z"
         self.assertFalseWithOptions(net_traffic)
 
-        net_traffic['end'] = "2016-04-06T20:06:37.000123Z"
-        self.assertTrueWithOptions(net_traffic)
+        net_traffic['start'] = "2016-04-06T20:06:37.000123Z"
+        self.assertFalseWithOptions(net_traffic)
 
         net_traffic['end'] = "2016-04-06T20:06:37.001Z"
         self.assertTrueWithOptions(net_traffic)
